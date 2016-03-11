@@ -1,8 +1,10 @@
 package com.l24o.orbistesttask.retrofit.loaders;
 
 import android.content.Context;
+import android.os.CountDownTimer;
 
-import com.l24o.orbistesttask.models.Area;
+import com.l24o.orbistesttask.models.Countries;
+import com.l24o.orbistesttask.models.Country;
 import com.l24o.orbistesttask.retrofit.ApiFac;
 import com.l24o.orbistesttask.retrofit.AreaService;
 import com.l24o.orbistesttask.retrofit.response.AreaResponse;
@@ -26,10 +28,10 @@ public class OrbisLoader extends BaseLoader {
     @Override
     protected Response apiCall() throws IOException {
         AreaService service = ApiFac.getAreaService();
-        Call<List<Area>> call = service.areas();
-        List<Area> areas = call.execute().body();
+        Call<Countries> call = service.areas();
+        Countries countries = call.execute().body();
         return new AreaResponse()
                 .setRequestResult(RequestResult.SUCCESS)
-                .setAnswer(areas);
+                .setAnswer(countries);
     }
 }

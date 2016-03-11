@@ -7,19 +7,19 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.l24o.orbistesttask.models.Area;
+import com.l24o.orbistesttask.models.Country;
 
 import java.util.List;
 
 /**
  * Created by chuff on 11.03.2016.
  */
-public class AreaArrayAdapter extends ArrayAdapter<Area> {
+public class AreaArrayAdapter extends ArrayAdapter<Country> {
 
-    private final List<Area> objects;
+    private final List<Country> objects;
     private final Activity context;
 
-    public AreaArrayAdapter(Activity context, List<Area> objects) {
+    public AreaArrayAdapter(Activity context, List<Country> objects) {
         super(context, R.layout.listitem, objects);
         this.objects = objects;
         this.context = context;

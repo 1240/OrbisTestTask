@@ -8,8 +8,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
-import com.google.gson.Gson;
-import com.l24o.orbistesttask.models.Area;
 import com.l24o.orbistesttask.realm.RealmHelper;
 import com.l24o.orbistesttask.retrofit.loaders.OrbisLoader;
 import com.l24o.orbistesttask.retrofit.response.Response;

@@ -1,6 +1,7 @@
 package com.l24o.orbistesttask.retrofit;
 
-import com.l24o.orbistesttask.models.Area;
+import com.l24o.orbistesttask.models.Countries;
+import com.l24o.orbistesttask.models.Country;
 
 import java.util.List;
 
@@ -13,6 +14,6 @@ import retrofit2.http.GET;
 public interface AreaService {
 
     @GET("/test.json")
-    Call<List<Area>> areas();
+    Call<Countries> areas();
 
 }

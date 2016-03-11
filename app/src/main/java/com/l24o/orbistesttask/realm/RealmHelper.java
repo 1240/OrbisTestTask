@@ -2,7 +2,7 @@ package com.l24o.orbistesttask.realm;
 
 import android.support.annotation.NonNull;
 
-import com.l24o.orbistesttask.models.Area;
+import com.l24o.orbistesttask.models.Country;
 
 import java.util.List;
 
@@ -13,15 +13,15 @@ import io.realm.Realm;
  */
 public class RealmHelper {
 
-    public static void save(@NonNull Realm realm, List<Area> areaList) {
+    public static void save(@NonNull Realm realm, List<Country> countryList) {
         realm.beginTransaction();
-        realm.clear(Area.class);
-        realm.copyToRealm(areaList);
+        realm.clear(Country.class);
+        realm.copyToRealm(countryList);
         realm.commitTransaction();
     }
 
     @NonNull
-    public static List<Area> getAreas(@NonNull Realm realm) {
-        return realm.allObjects(Area.class);
+    public static List<Country> getAreas(@NonNull Realm realm) {
+        return realm.allObjects(Country.class);
     }
 }

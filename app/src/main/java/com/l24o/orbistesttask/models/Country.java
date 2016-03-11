@@ -6,21 +6,10 @@ import io.realm.annotations.Ignore;
 /**
  * Created by chuff on 10.03.2016.
  */
-public class Area extends RealmObject {
+public class Country extends RealmObject {
 
     private String population;
     private String countryName;
-
-    @Ignore
-    private boolean isChecked;
-
-    public boolean isChecked() {
-        return isChecked;
-    }
-
-    public void setIsChecked(boolean isChecked) {
-        this.isChecked = isChecked;
-    }
 
     public String getPopulation() {
         return population;
