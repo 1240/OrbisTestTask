@@ -8,13 +8,13 @@ import io.realm.RealmObject;
  */
 public class Countries extends RealmObject {
 
-    private RealmList<Country> country;
+    private RealmList<Country> countries;
 
-    public RealmList<Country> getCountry() {
-        return country;
+    public RealmList<Country> getCountries() {
+        return countries;
     }
 
-    public void setCountry(RealmList<Country> country) {
-        this.country = country;
+    public void setCountries(RealmList<Country> countries) {
+        this.countries = countries;
     }
 }

@@ -1,5 +1,6 @@
 package com.l24o.orbistesttask;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
@@ -16,17 +17,23 @@ import io.realm.Realm;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Response> {
 
-    private ListView listView;
     private AreaArrayAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        listView = (ListView) findViewById(R.id.listView);
-        adapter = new AreaArrayAdapter(this, RealmHelper.getAreas(Realm.getInstance(this)));
+        ListView listView = (ListView) findViewById(R.id.listView);
+        adapter = new AreaArrayAdapter(this, RealmHelper.getAreas(Realm.getInstance(this), true));
         listView.setAdapter(adapter);
-        getSupportLoaderManager().initLoader(R.id.area_loader, null, this);
+        if (RealmHelper.isEmpty(Realm.getInstance(this)))
+            getSupportLoaderManager().initLoader(R.id.area_loader, null, this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
     }
 
     @Override
@@ -50,8 +57,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         int id = item.getItemId();
         switch (id) {
             case R.id.action_name:
+
                 break;
             case R.id.action_population:
+                startActivity(new Intent(this, Main2Activity.class));
                 break;
         }
         return super.onOptionsItemSelected(item);

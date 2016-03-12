@@ -17,8 +17,8 @@ public class AreaResponse extends Response {
     public void save(Context context) {
         Countries countries = (Countries) getTypedAnswer();
         if (countries != null) {
-            if (countries.getCountry() != null)
-                RealmHelper.save(Realm.getInstance(context), countries.getCountry());
+            if (countries.getCountries() != null)
+                RealmHelper.save(Realm.getInstance(context), countries.getCountries());
         }
     }
 }

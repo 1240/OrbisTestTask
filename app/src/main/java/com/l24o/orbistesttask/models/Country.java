@@ -8,8 +8,19 @@ import io.realm.annotations.Ignore;
  */
 public class Country extends RealmObject {
 
+
     private String population;
+
     private String countryName;
+    private boolean isChecked;
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setIsChecked(boolean isChecked) {
+        this.isChecked = isChecked;
+    }
 
     public String getPopulation() {
         return population;
