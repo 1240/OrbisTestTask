@@ -48,4 +48,9 @@ public class RealmHelper {
             result.sort("population");
         return result;
     }
+
+    @NonNull
+    public static List<Country> getAreasForSend(@NonNull Realm realm) {
+        return realm.where(Country.class).equalTo("isChecked", true).findAll();
+    }
 }

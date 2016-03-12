@@ -1,7 +1,9 @@
 package com.l24o.orbistesttask;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,10 +13,16 @@ import android.widget.ListView;
 
 import com.l24o.orbistesttask.models.Country;
 import com.l24o.orbistesttask.realm.RealmHelper;
+import com.l24o.orbistesttask.retrofit.ApiFac;
+import com.l24o.orbistesttask.retrofit.AreaService;
 
+import java.io.IOException;
 import java.util.List;
 
 import io.realm.Realm;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import okio.BufferedSink;
 
 public class Main2Activity extends AppCompatActivity {
 
@@ -56,5 +64,31 @@ public class Main2Activity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void send(final View view) {
+        new AsyncTask<Boolean, Boolean, Boolean>() {
+            @Override
+            protected Boolean doInBackground(Boolean... params) {
+                List<Country> areasForSend = RealmHelper.getAreasForSend(Realm.getInstance(Main2Activity.this));
+                try {
+                    AreaService areaService = ApiFac.getAreaService();
+                    areaService.postCheckedObjects(areasForSend);
+                } catch (Exception e) {
+                    return false;
+                }
+                return true;
+            }
+
+            @Override
+            protected void onPostExecute(Boolean aBoolean) {
+                if (aBoolean) {
+                    Snackbar.make(view, "success", Snackbar.LENGTH_LONG).show();
+                } else {
+                    Snackbar.make(view, "failed", Snackbar.LENGTH_LONG).show();
+                }
+                super.onPostExecute(aBoolean);
+            }
+        }.execute();
     }
 }

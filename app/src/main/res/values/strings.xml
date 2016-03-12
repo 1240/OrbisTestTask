@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">OrbisTestTask</string>
+    <string name="send_to_server">SEND TO SERVER</string>
 </resources>
